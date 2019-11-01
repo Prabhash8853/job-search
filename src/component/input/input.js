@@ -7,11 +7,11 @@ const Input = (props) => {
     const inputClasses = [];
     inputClasses.push('inpt_login')
     if (props.invalid && props.shouldValidate && props.touched) {
-        invalid = false
+        invalid = true
     }
 
     else {
-        invalid = true
+        invalid = false
     }
 
     switch (props.elementType) {
@@ -21,7 +21,6 @@ const Input = (props) => {
                 {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed}
-                required
             />
             break;
         case ('textarea'):
@@ -37,7 +36,6 @@ const Input = (props) => {
                 {...props.elementConfig}
                 value={props.value}
                 onChange={props.changed}
-                required
             />
     }
 

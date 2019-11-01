@@ -1,9 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { connect } from "react-redux";
 import './JobDetails.css';
+import Modal from '../Modal/Modal';
 
-function JobDetails({ details }) {
+function JobDetails({ details, clicked }) {
+    const [modal, setModal] = useState(false)
+    const [show, setModalShow] = useState(false)
 
+    const handleModal = () => {
+        setModal(true)
+        setModalShow(true)
+    }
+
+    const handleBackdrop = () => {
+        setModal(false)
+    }
+    
     const handleDate = (date) => {
         var published_Date = new Date(date)
         var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -52,7 +64,15 @@ function JobDetails({ details }) {
                         <p>{handleDate(details.created_at)}</p>
                     </div>
                     <div className="apply_btn fl-3">
-                        <p><button className = "btn_submit" type="submit">Apply</button></p>
+                        <p>
+                            <button 
+                                className = "btn_submit"
+                                type="submit"
+                                onClick = {handleModal}
+                            >
+                                Apply
+                            </button>
+                        </p>
                     </div>
                 </div>
                 <div className="job_description">
@@ -61,10 +81,20 @@ function JobDetails({ details }) {
 
                 <div className="job_footer">
                     <div className="apply_button">
-                        <button className = "btn_submit" type="submit">Apply</button>
+                        <button 
+                            className = "btn_submit" 
+                            type="submit"
+                            onClick = {handleModal}
+                        >
+                                Apply
+                        </button>
                     </div>
                 </div>
             </div>
+
+            {
+                modal ? (<Modal BackdropClicked = {handleBackdrop} show = {show}/>) : null
+            }
         </div>
     )
 }

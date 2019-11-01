@@ -4,7 +4,7 @@
 }
 
 .inpt_login{
-    width: 100%;
+    width: 95%;
     border: none;
     border: 1px solid #DEDEDE;
     border-radius: 5px;
@@ -20,6 +20,6 @@
 }
 
 .invalid{
-    border-bottom: 1px solid red;
+    border: 1px solid red;
     transition: all 0.3s ease-in-out;
 }
