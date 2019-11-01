@@ -1,0 +1,81 @@
+.card{
+    width: 50%;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    border: 1px solid grey;
+    display: flex;
+    flex-flow: column;
+}
+
+.card_header{
+    width: auto;
+    padding: 20px 20px;
+    display: flex;
+    background-color: #0069c0;
+    color: white;
+}
+
+.job-title{
+    flex: 1;
+}
+
+.company-logo{
+    width: 40px;
+    height: 40px;
+}
+
+.company-logo > img{
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+}
+
+.card-body{
+    padding: 10px 20px;
+    display: flex;
+    flex-flow: row;
+}
+
+.card_description{
+    padding: 20px 20px;
+    display: flex;
+    flex-flow: row;
+}
+
+.apply_btn{
+    text-align: right;
+}
+
+.job_description{
+    padding: 20px;
+}
+
+.job_location{
+    flex: 0.3;
+    text-align: right;
+}
+
+.fl-3{
+    flex: 0.3;
+}
+
+.btn_submit{
+    border: none;
+    padding: 10px 20px;
+    background-color: #2196f3;
+    color: white;
+    border-radius: 2px;
+    font-size: 14px;
+    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.26);
+}
+
+.job_footer{
+    padding: 20px 20px;
+    background-color: #f1f1f1;
+}
+
+.btn_submit:hover {
+    cursor: pointer;
+}

@@ -41,3 +41,10 @@ export const fetchJobAction = (data) => dispatch => {
             dispatch(fetchJobFail(err))
         })
 }
+
+export const setViewJobDetails = jobdetails => {
+    return {
+        type: actionTypes.SET_VIEW_JOB_DETAILS,
+        payload : jobdetails
+    }
+}

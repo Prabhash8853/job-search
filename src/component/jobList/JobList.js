@@ -27,10 +27,9 @@ class JobList extends React.Component {
         this.props.getJobs(id);
     }
 
-    handleDisplay = (event) => {
-        event.target.displayDetails = true
-        // this.props.data[index].displayDetails = true
-        // console.log(this.props.data[index])
+    handleDisplay = (jobdata) => {
+        this.props.setViewJobDetails(jobdata);
+        this.props.history.push(`/job/${jobdata.id}/details`)
     }
     
     componentDidUpdate(){}
@@ -45,13 +44,7 @@ class JobList extends React.Component {
                             <div className="cd" key={index}>
                                 <p>{data.title}</p>
                                 <p>{data.type}</p>
-
-                                {
-                                    data.displayDetails ? (<div>
-                                        <p dangerouslySetInnerHTML = {{ __html: data.description }}></p>
-                                    </div>) : null
-                                }
-                                <button onClick={(event) => this.handleDisplay(event)}>View Details</button>
+                                <button onClick={()=>this.handleDisplay(this.props.data[index])}>View Details</button>
                             </div>
                         )
                     })
@@ -71,6 +64,9 @@ const mapDispatchToProps = (dispatch) => {
     return {
         getJobs: (description) => {
             dispatch(actionTypes.fetchJobAction(description))
+        },
+        setViewJobDetails : jobdata => {
+            dispatch(actionTypes.setViewJobDetails(jobdata))
         }
     }
 }

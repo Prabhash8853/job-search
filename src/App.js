@@ -5,20 +5,18 @@ import { Route, BrowserRouter, Switch } from 'react-router-dom';
 import JobTitle from './component/jobSearch/JobTitle';
 import store from './store/store';
 import JobListComp from './component/jobList/JobList';
+import JobDetails from "./component/jobDetails/JobDetails";
 
 function App() {
   return (
     <Provider store = {store}>
-      <div className="App">
-        <header className="App-header">
           <BrowserRouter>
             <Switch>
               <Route exact path = "/" component = {JobTitle} />
-              <Route path = "/job/:id" component = {JobListComp}/>
+              <Route exact path = "/job/:id" component = {JobListComp}/>
+              <Route exact path = "/job/:id/details" component = {JobDetails} />
             </Switch>
           </BrowserRouter>
-        </header>
-      </div>
     </Provider>
   );
 }

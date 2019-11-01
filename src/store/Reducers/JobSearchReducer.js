@@ -3,7 +3,8 @@ import * as utility from '../../utility/utility';
 
 const initialState = {
     error: null,
-    data: []
+    data: [],
+    viewDetails : {}
 }
 
 const fetchJobSuccess = (state, action) => {
@@ -25,7 +26,10 @@ const fetchJobReducer = (state = initialState, action) => {
     switch (action.type) {
         case actionTypes.FETCH_JOB_SUCCESS: return fetchJobSuccess(state, action);
         case actionTypes.FETCH_JOB_FAIL: return fetchJobFail(state, action);
-
+        case actionTypes.SET_VIEW_JOB_DETAILS : return {
+            ...state,
+            viewDetails : action.payload
+        }
         default: return state;
     }
 }
