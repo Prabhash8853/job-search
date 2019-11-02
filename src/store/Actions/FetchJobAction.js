@@ -24,7 +24,7 @@ export const fetchJobFail = (err) => {
 export const fetchJobAction = (data) => dispatch => {
     dispatch(fetchJobStart());
     var jobLanguage = data.description
-    axios.get(`https://pensive-mayer-9a2aeb.netlify.com/https://jobs.github.com/positions.json?description=${jobLanguage}`, {
+    axios.get(`https://jobs.github.com/positions.json?description=${jobLanguage}`, {
         headers: {
             "Content-Type": "application/json",
             "Accept": "Access-Control-Allow-Origin",
