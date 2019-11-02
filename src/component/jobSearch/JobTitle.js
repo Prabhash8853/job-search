@@ -28,6 +28,9 @@ class JobTitle extends React.Component {
         }
     }
 
+
+    
+
     inputHandler = (e, inputId) => {
         const updatedjobElement = utility.updateObject(this.state.Form[inputId], {
             value: e.target.value,
@@ -55,6 +58,8 @@ class JobTitle extends React.Component {
         }
         this.props.history.push(`/job/${formData.job}`)
     }
+
+    
 
     render() {
 

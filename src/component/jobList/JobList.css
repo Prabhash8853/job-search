@@ -7,3 +7,10 @@
     padding: 10px 10px;
     color: black;
 }
+
+.loading{
+    display: block;
+    width: 50%;
+    position: relative;
+    margin: 20px auto;
+}

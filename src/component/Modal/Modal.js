@@ -1,7 +1,11 @@
 import React from 'react';
+import { connect } from 'react-redux'; 
 import './Modal.css';
 import Input from '../input/input';
 import * as Utility from '../../utility/utility';
+import * as actionTypes from '../../store/Actions/FetchJobAction';
+import { withRouter} from 'react-router-dom';
+
 
 class Modal extends React.Component {
 
@@ -49,7 +53,8 @@ class Modal extends React.Component {
                 },
             },
             formIsValid: false,
-            selectedFile: null
+            selectedFile: null,
+            fileUrl:null
         }
     }
 
@@ -74,6 +79,15 @@ class Modal extends React.Component {
         
     }
 
+    
+
+    onFileChange = (event) => {
+        this.setState({
+            selectedFile: event.target.files[0],
+            fileUrl: URL.createObjectURL(event.target.files[0])
+        });
+    }
+
     onSubmitHandler = (event) => {
         event.preventDefault();
         const formData = {};
@@ -81,13 +95,13 @@ class Modal extends React.Component {
         for (let formElementId in this.state.Form) {
             formData[formElementId] = this.state.Form[formElementId].value;
         }
-        this.props.getLoginUser(formData);
-    }
-
-    onFileChange = (event) => {
-        this.setState({
-            selectedFile: event.target.files[0]
-        });
+        this.props.setApplicantDetail(
+            formData,
+            this.state.selectedFile,
+            this.state.fileUrl,
+            this.props.companyName
+        );
+        this.props.history.push('/applicant-details')
     }
 
     render() {
@@ -136,4 +150,20 @@ class Modal extends React.Component {
     }
 }
 
-export default Modal;
+const mapDispatchToProps = (dispatch) => {
+    return {
+        setApplicantDetail : (applicantData, applicantFile, fileUrl, company) => {
+            dispatch(actionTypes.setApplicantDetail({
+                applicantData: applicantData,
+                applicantFile: applicantFile,
+                fileUrl: fileUrl,
+                company: company
+            }))
+        }
+    }
+}
+
+const mapStateToProps = (state) => {}
+
+
+export default connect(mapStateToProps, mapDispatchToProps)(withRouter(Modal));

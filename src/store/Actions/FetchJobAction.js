@@ -23,16 +23,14 @@ export const fetchJobFail = (err) => {
 
 export const fetchJobAction = (data) => dispatch => {
     dispatch(fetchJobStart());
-    var jobLanguage = data.language;
-    axios.get(`https://cors-anywhere.herokuapp.com/https://jobs.github.com/positions.json`, {
-        data: {
-            "description": jobLanguage
-        },
+    var jobLanguage = data.description
+    var page = data.page;
+    console.log(jobLanguage, page)
+    axios.get(`https://jobs.github.com/positions.json?description=${jobLanguage}&page=${page}`, {
         headers: {
             "Content-Type": "application/json",
             "Accept": "Access-Control-Allow-Origin",
         },
-
     })
         .then(res => {
             dispatch(fetchJobSuccess(res.data));
@@ -48,3 +46,12 @@ export const setViewJobDetails = jobdetails => {
         payload : jobdetails
     }
 }
+
+export const setApplicantDetail = applicantDetails => {
+    console.log(applicantDetails)
+    return {
+        type: actionTypes.SET_VIEW_APPLICANT_FORM,
+        payload : applicantDetails
+    }
+}
+
