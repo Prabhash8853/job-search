@@ -43,7 +43,10 @@
         transform: translateY(100%);
     }
 }
-/* 
-.input_lgn_modal{
 
-} */
+
+@media (min-width: 320px) and (max-width: 768px){
+    .Modal{
+        top: 0;
+    }
+}

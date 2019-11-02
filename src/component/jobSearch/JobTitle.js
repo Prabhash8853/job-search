@@ -13,7 +13,7 @@ class JobTitle extends React.Component {
         super();
         this.state = {
             Form: {
-                job: {
+                name: {
                     elementType: 'input',
                     elementConfig: {
                         type: 'text',
@@ -69,7 +69,7 @@ class JobTitle extends React.Component {
 
         // formData.job will have the programming language in which user want to search a job
         // below code will redirect to /job/:id url having that programming language and fetch the data
-        this.props.history.push(`/job/${formData.job}`)
+        this.props.history.push(`/job/${formData.name}`)
     }
 
     
