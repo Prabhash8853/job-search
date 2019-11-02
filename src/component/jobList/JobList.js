@@ -16,14 +16,14 @@ class JobList extends React.Component {
     }
 
     componentDidMount() {
-        
+
         this.fetchJobs();
-        
+
         this.setState({
             fetchedData: this.props.data
         })
     }
-    
+
 
     fetchJobs = () => {
         const { id } = this.props.match.params
@@ -38,27 +38,41 @@ class JobList extends React.Component {
 
     render() {
         if (!this.props.loading) {
-            var displayComponent = displayComponent = <div>
-            {
-                this.props.data.map((data, index) => {
-                    return (
-                        <div className="cd" key={index}>
-                            <p>{data.title}</p>
-                            <p>{data.type}</p>
-                            <button onClick={() => this.handleDisplay(this.props.data[index])}>View Details</button>
-                        </div>
-                    )
-                })
-            }</div>
+            var displayComponent = displayComponent = <div className="row">
+                {
+                    this.props.data.map((data, index) => {
+                        return (
+                            <div className="col-md-12 col-xs-4 col-sm-6" key={index}>
+                                <div className="cd">
+                                    <div className="company_nd_logo">
+
+                                        <div className="cd_company_name inline-block"><p>{data.title}</p></div>
+                                        <div className="cd_company_logo ">
+                                            <img src={data.company_logo} alt="logo" />
+                                        </div>
+                                    </div>
+
+                                    <div className="location_type">
+                                        <div className="cd_company_type inline-block"><p>{data.type}</p></div>
+                                        <div className="cd_company_location inline-right">
+                                            <p>{data.location}</p>
+                                        </div>
+                                    </div>
+                                    <button className="btn_submit" onClick={() => this.handleDisplay(this.props.data[index])}>View Details</button>
+                                </div>
+                            </div>
+                        )
+                    })
+                }</div>
 
         }
         else {
 
-            displayComponent = <div className = "loading"><Loader /></div>
+            displayComponent = <div className="loading"><Loader /></div>
         }
 
         return (
-            <div className="cards">
+            <div className="container">
                 {displayComponent}
             </div>
         );
@@ -75,7 +89,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getJobs: (description, page) => {
-            dispatch(actionTypes.fetchJobAction({description: description}))
+            dispatch(actionTypes.fetchJobAction({ description: description }))
         },
         setViewJobDetails: jobdata => {
             dispatch(actionTypes.setViewJobDetails(jobdata))
@@ -90,3 +104,6 @@ const JobListComp = connect(
 
 
 export default JobListComp
+
+
+// <p className="color-grey">{data.type}</p>
