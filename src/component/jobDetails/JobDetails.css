@@ -79,3 +79,9 @@
 .btn_submit:hover {
     cursor: pointer;
 }
+
+@media (min-width: 320px) and (max-width: 768px){
+    .card{
+        width: 100%;
+    }
+}

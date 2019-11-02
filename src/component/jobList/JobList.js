@@ -17,6 +17,9 @@ class JobList extends React.Component {
 
     componentDidMount() {
 
+        // the below function will fetch the id params from react-router and make
+        // a api call to the github job searching API
+
         this.fetchJobs();
 
         this.setState({
@@ -32,6 +35,10 @@ class JobList extends React.Component {
 
     handleDisplay = (jobdata) => {
         this.props.setViewJobDetails(jobdata);
+
+        //the fetched data have unique id
+        // we are redirecting the page having the details of particular job using react-redux to store the
+        // data and pass it to another page
         this.props.history.push(`/job/${jobdata.id}/details`)
     }
 
@@ -88,9 +95,13 @@ const mapStateToProps = (state) => {
 
 const mapDispatchToProps = (dispatch) => {
     return {
+
+        // this dispatch function will dispatch an action which will get the list of jobs
         getJobs: (description, page) => {
             dispatch(actionTypes.fetchJobAction({ description: description }))
         },
+
+        //this dispatch function will dispacth an action to store the data of particular job
         setViewJobDetails: jobdata => {
             dispatch(actionTypes.setViewJobDetails(jobdata))
         }

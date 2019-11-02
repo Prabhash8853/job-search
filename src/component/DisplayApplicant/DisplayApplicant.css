@@ -32,9 +32,23 @@
 
 .pd-10{
     padding: 10px 0px;
+    color: #707070;
 }
 
 .span{
-    color: #707070;
+    color: black;
     font-size: 1.1vw;
+}
+
+@media (min-width: 320px) and (max-width: 768px){
+    .display_applicant{
+        width: 100%;
+    }
+    .span{
+        font-size: 20px;
+    }
+    .uploaded_image{
+        float: none;
+        padding: 0px;
+    }
 }

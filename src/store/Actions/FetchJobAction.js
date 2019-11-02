@@ -46,7 +46,6 @@ export const setViewJobDetails = jobdetails => {
 }
 
 export const setApplicantDetail = applicantDetails => {
-    console.log(applicantDetails)
     return {
         type: actionTypes.SET_VIEW_APPLICANT_FORM,
         payload : applicantDetails

@@ -6,6 +6,9 @@ import './JobSearch.css';
 
 class JobTitle extends React.Component {
 
+    // setting dynamic inputs which is imported from Input components
+    // if you want to add a new input just add similar object shown in the state
+
     constructor() {
         super();
         this.state = {
@@ -13,15 +16,17 @@ class JobTitle extends React.Component {
                 job: {
                     elementType: 'input',
                     elementConfig: {
-                        type: 'jobLanguage',
-                        placeholder: 'Search a job in your Language'
+                        type: 'text',
+                        placeholder: 'Enter a Programming Language...'
                     },
                     value: '',
                     validation: {
                         required: true,
-                        isEmail: true
+                        minLength: 1,
+                        maxLength: 30
                     },
                     valid: false,
+                    touched: false
                 },
             },
             formIsValid: false
@@ -32,10 +37,15 @@ class JobTitle extends React.Component {
     
 
     inputHandler = (e, inputId) => {
+        // updating the value, valid, touched property of particular input states having unique key
+
         const updatedjobElement = utility.updateObject(this.state.Form[inputId], {
             value: e.target.value,
             valid: utility.checkValidity(e.target.value, this.state.Form[inputId].validation),
+            touched: true
         });
+
+        // get the input types using inputId and update all the values which is updated above.
 
         const updatedForm = utility.updateObject(this.state.Form, {
             [inputId]: updatedjobElement
@@ -56,6 +66,9 @@ class JobTitle extends React.Component {
         for (let formElementId in this.state.Form) {
             formData[formElementId ] = this.state.Form[formElementId].value;
         }
+
+        // formData.job will have the programming language in which user want to search a job
+        // below code will redirect to /job/:id url having that programming language and fetch the data
         this.props.history.push(`/job/${formData.job}`)
     }
 
@@ -63,6 +76,8 @@ class JobTitle extends React.Component {
 
     render() {
 
+
+        // associate key values to every input in the state
         const jobSearchElementArray = [];
         for (let key in this.state.Form) {
             jobSearchElementArray.push({
@@ -87,6 +102,7 @@ class JobTitle extends React.Component {
                                 value={jobElement.config.value}
                                 invalid={!jobElement.config.valid}
                                 shouldValidate={jobElement.config.validation}
+                                touched={jobElement.config.touched}
                                 changed={(event) => this.inputHandler(event, jobElement.id)}
                             />
                         )

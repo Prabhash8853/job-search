@@ -17,7 +17,7 @@ function JobDetails({ details, clicked, history }) {
         setModal(false)
     }
 
-
+    // a utility function to get the date from api and just show the month and date, when it is published
     const handleDate = (date) => {
         var published_Date = new Date(date)
         var monthName = ["Jan", "Feb", "Mar", "Apr", "May", "Jun",
@@ -93,7 +93,10 @@ function JobDetails({ details, clicked, history }) {
                         </div>
                     </div>
                 </div>
-
+            {/* Modal will  get the users input and store in redux
+                after that Modal will redirect the user to a new page where users details will
+                be shown... user details will be shown ini DisplaApplicant component
+            */}
                 {
                     modal ? (<Modal
                         BackdropClicked={handleBackdrop}
@@ -119,6 +122,8 @@ const mapDispatchToProps = dispatch => { }
 
 const mapStateToProps = (state) => {
     return {
+
+        // fetching the details of particular job using redux
         details: state.fetchJobReducer.viewDetails
     }
 }

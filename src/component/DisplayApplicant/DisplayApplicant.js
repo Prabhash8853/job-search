@@ -4,7 +4,6 @@ import "./DisplayApplicant.css"
 
 const DisplayApplicant = (props) => {
 
-    console.log(props.applicantDetails)
     if (props.applicantDetails.length !== 0) {
         var displayComponent = (
             <div  className="display_applicant">
