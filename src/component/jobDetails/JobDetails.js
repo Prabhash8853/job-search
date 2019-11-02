@@ -26,7 +26,7 @@ function JobDetails({ details, clicked, history }) {
         return date_shown;
     }
 
-    if (details.length > 0) {
+    if (details.length !== 0) {
         var displayComponent = (
             <div className="job_details">
                 <div className="card">
