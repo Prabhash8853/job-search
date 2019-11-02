@@ -12,7 +12,6 @@ class JobList extends React.Component {
         this.state = {
             fetchedData: [],
             displayDetails: false,
-            page: 1
         }
     }
 
@@ -23,17 +22,12 @@ class JobList extends React.Component {
         this.setState({
             fetchedData: this.props.data
         })
-        window.addEventListener("scroll", this.onScroll);
     }
-
-    componentWillUnmount() {
-        window.removeEventListener("scroll", this.onScroll);
-      }
     
 
     fetchJobs = () => {
         const { id } = this.props.match.params
-        this.props.getJobs(id, this.state.page);
+        this.props.getJobs(id);
     }
 
     handleDisplay = (jobdata) => {
@@ -41,26 +35,8 @@ class JobList extends React.Component {
         this.props.history.push(`/job/${jobdata.id}/details`)
     }
 
-    onScroll = () => {
-        var scrollTop =
-          (document.documentElement && document.documentElement.scrollTop) || document.body.scrollTop;
-        var scrollHeight =
-          (document.documentElement && document.documentElement.scrollHeight) || document.body.scrollHeight;
-        var clientHeight =
-          document.documentElement.clientHeight || window.innerHeight;
-        var scrolledToBottom = Math.ceil(scrollTop + clientHeight) >= scrollHeight;
-    
-        if (scrolledToBottom) {
-          this.setState({
-            page: this.state.page + 1
-          });
-          this.fetchJobs();
-        }
-      }
-
 
     render() {
-        console.log(this.props.data)
         if (!this.props.loading) {
             var displayComponent = displayComponent = <div>
             {
@@ -99,7 +75,7 @@ const mapStateToProps = (state) => {
 const mapDispatchToProps = (dispatch) => {
     return {
         getJobs: (description, page) => {
-            dispatch(actionTypes.fetchJobAction({description: description, page: page}))
+            dispatch(actionTypes.fetchJobAction({description: description}))
         },
         setViewJobDetails: jobdata => {
             dispatch(actionTypes.setViewJobDetails(jobdata))
