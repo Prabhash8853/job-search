@@ -49,21 +49,22 @@ class JobList extends React.Component {
                 {
                     this.props.data.map((data, index) => {
                         return (
-                            <div className="col-md-12 col-xs-4 col-sm-6" key={index}>
+                            <div className="col-md-12 col-xs-12 col-sm-12" key={index}>
                                 <div className="cd">
-                                    <div className="company_nd_logo">
-
-                                        <div className="cd_company_name inline-block"><p>{data.title}</p></div>
-                                        <div className="cd_company_logo ">
-                                            <img src={data.company_logo} alt="logo" />
+                                    <div className = "company_name_logo">
+                                        <div className = "company_name inline-block">
+                                            <p>{data.title}</p>
+                                        </div>
+                                        <div className = "company_logo inline-block">
+                                            <img src = {data.company_logo} alt = "logo"></img>
                                         </div>
                                     </div>
 
-                                    <div className="location_type">
-                                        <div className="cd_company_type inline-block"><p>{data.type}</p></div>
-                                        <div className="cd_company_location inline-right">
-                                            <p>{data.location}</p>
-                                        </div>
+                                    <div className = "job_type">
+                                        <p className = "job_color">Type: {"   "} {data.type}</p>
+                                    </div>
+                                    <div className = "job_location">
+                                        <p className = "job_color">Location: {"   "} {data.location}</p>
                                     </div>
                                     <button className="btn_submit" onClick={() => this.handleDisplay(this.props.data[index])}>View Details</button>
                                 </div>
@@ -116,5 +117,22 @@ const JobListComp = connect(
 
 export default JobListComp
 
+// <button className="btn_submit" onClick={() => this.handleDisplay(this.props.data[index])}>View Details</button>
+
 
 // <p className="color-grey">{data.type}</p>
+
+// <div className="company_nd_logo">
+
+//                                         <div className="cd_company_name inline-block"><p>{data.title}</p></div>
+//                                         <div className="cd_company_logo ">
+//                                             <img src={data.company_logo} alt="logo" />
+//                                         </div>
+//                                     </div>
+
+//                                     <div className="location_type">
+//                                         <div className="cd_company_type inline-block"><p>{data.type}</p></div>
+//                                         <div className="cd_company_location inline-right">
+//                                             <p>{data.location}</p>
+//                                         </div>
+//                                     </div>

@@ -17,27 +17,10 @@
     margin: 20px auto;
 }
 
-.company_nd_logo{
-    display: block;
+.company_name_logo{
     width: 100%;
-}
-
-.cd_company_logo{
-    display: inline-block;
-    float: right;
-    width: 100px;
     height: 100px;
-}
 
-.cd_company_logo > img{
-    width: 100%;
-    height: 100%;
-}
-
-.inline-right{
-    display: inline-block;
-    float: left;
-    width: 20%;
 }
 
 .inline-block{
@@ -45,6 +28,23 @@
     
 }
 
-.location_type{
+.company_name{
+    width: 50%;
+}
+
+.company_logo{
+    width: 50%;
+    text-align: right;
+    height: 100%;
+}
+
+.company_logo > img {
+    object-fit: contain;
+    height: 100%;
+    width: 50%;
+}
+
+.job_color{
     color: #707070;
 }
+
