@@ -36,11 +36,11 @@
     }
 
     50%{
-        transform: translateY(90%);
+        transform: translateY(70%);
     }
 
     100%{
-        transform: translateY(100%);
+        transform: translateY(80%);
     }
 }
 
