@@ -115,6 +115,7 @@ class JobTitle extends React.Component {
         return (
             <div className="jobtitle">
                 <div className="jobtitle_input">
+                <label>Enter a Programming Language in which you are finding a Job...</label>
                     {jobSearchElements}
                 </div>
             </div>
